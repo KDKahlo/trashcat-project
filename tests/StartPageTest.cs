@@ -31,6 +31,12 @@ namespace trashcat_automation.tests
             //this comes from System.Threading at top of page. It is needed for Threading.
             Thread.Sleep(100);
         }
-        
+        [Test, Order(1)]
+
+        public void VerifyStartScene()
+        {
+            string sceneName = Driver.GetCurrentScene();
+            Assert.That(sceneName, Is.EqualTo("Start"));
+        }
     }
 }
