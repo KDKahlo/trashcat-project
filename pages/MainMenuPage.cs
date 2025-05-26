@@ -14,7 +14,19 @@ namespace trashcat_automation.pages
         }
         //this will point the the startbutton at the start of the game, finding it by the name.
         public AltObject StartButton { get => Driver.FindObject(By.NAME, "StartButton"); }
-             
+        //this will point the the start text at the start of the game, finding it by the name.     
         public AltObject StartText { get => Driver.FindObject(By.NAME, "START"); }
+
+        public bool IsDisplayed()
+        {
+            if (StartButton != null && StartText != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
