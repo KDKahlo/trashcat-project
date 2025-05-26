@@ -28,5 +28,9 @@ namespace trashcat_automation.pages
                 return false;
             }
         }
+        public void PressStart()
+        {
+            StartButton.Tap();
+        }
     }
 }
