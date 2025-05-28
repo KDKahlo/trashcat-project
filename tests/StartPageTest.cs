@@ -45,5 +45,12 @@ namespace trashcat_automation.tests
             //checks that startpage is correctly displayed on screen
             Assert.True(startPage.IsDisplayed());
         }
+        [Test, Order(3)]
+
+        public void VerifyStartText()
+        {
+            string buttonText = startPage.StartText.GetText();
+            Assert.That(buttonText, Is.EqualTo("START"));
+        }
     }
 }
