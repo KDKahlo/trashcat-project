@@ -65,5 +65,16 @@ namespace trashcat_automation.tests
 
             Assert.That(buttonText, Is.EqualTo("Run"), "Button text did not change to 'Run' after pressing Start");
         }
+        public void FindTextObject()
+        {
+            string elementName = "Text";
+            var textObjects = Driver.FindObjects(By.NAME, elementName);
+            foreach (var item in textObjects)
+            {
+                Console.WriteLine(item.name);
+            }
+            Console.WriteLine(textObjects.Count);
+            
+        }
     }
 }
