@@ -49,8 +49,21 @@ namespace trashcat_automation.tests
 
         public void VerifyStartText()
         {
+            //this will search for the text on the screen and very it matches what is on the start button
             string buttonText = startPage.StartText.GetText();
             Assert.That(buttonText, Is.EqualTo("START"));
+        }
+
+        [Test, Order(4)]
+
+        public void StartButtonTapped()
+        {
+            startPage.PressStart();
+
+            var startButton = Driver.WaitForObject(By.NAME, "StartButton", timeout: 10);
+            string buttonText = startButton.GetText();
+
+            Assert.That(buttonText, Is.EqualTo("Run"), "Button text did not change to 'Run' after pressing Start");
         }
     }
 }
