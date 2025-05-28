@@ -38,5 +38,12 @@ namespace trashcat_automation.tests
             string sceneName = Driver.GetCurrentScene();
             Assert.That(sceneName, Is.EqualTo("Start"));
         }
+        [Test, Order(2)]
+
+        public void StartButtonLoadedCorrectly()
+        {
+            //checks that startpage is correctly displayed on screen
+            Assert.True(startPage.IsDisplayed());
+        }
     }
 }
