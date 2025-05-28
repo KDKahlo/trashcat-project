@@ -100,3 +100,4 @@ C:\Users\kmdix\OneDrive\Desktop\trashcat-project\obj\Debug\net8.0\refint\trashca
 C:\Users\kmdix\OneDrive\Desktop\trashcat-project\obj\Debug\net8.0\trashcat-project.pdb
 C:\Users\kmdix\OneDrive\Desktop\trashcat-project\obj\Debug\net8.0\trashcat-project.genruntimeconfig.cache
 C:\Users\kmdix\OneDrive\Desktop\trashcat-project\obj\Debug\net8.0\ref\trashcat-project.dll
+c:\Users\kmdix\OneDrive\Desktop\trashcat-project\obj\Debug\net8.0\trashcat-project.sourcelink.json
