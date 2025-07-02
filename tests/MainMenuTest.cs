@@ -68,15 +68,21 @@ namespace trashcat_automation.tests
             MainMenuPage.IsStoreDisplayed();
         }
         [Test, Order(8)]
-                public void VerifyMissionsDisplayed()
+        public void VerifyMissionsDisplayed()
         {
             MainMenuPage.IsMissionsDisplayed();
         }
 
-              [Test, Order(9)]
-          public void VerifySettingsDisplayed()
+        [Test, Order(9)]
+        public void VerifySettingsDisplayed()
         {
             MainMenuPage.IsSettingsDisplayed();
+        }
+        [Test, Order(10)]
+        public void GetObjectWhichContainsButton()
+        {
+            MainMenuPage.StartButton.Click();
+            MainMenuPage.WaitForObjectContainsButton();
         }
     }
 }

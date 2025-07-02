@@ -164,5 +164,24 @@ namespace trashcat_automation.pages
                 Console.WriteLine("Settings is not displayed.");
             }
         }
+        //this function will wait for an object that contains the text "Button" and return it.
+        public void WaitForObjectContainsButton()
+        {
+
+            Console.WriteLine(ObjectButton.name);
+            Assert.That(ObjectButton.name, Is.EqualTo("pauseButton"));
+        }
+        //this function will verify that the logo is removed from the screen when the StartButton is clicked
+        public void WaitForLogoToDisappear()
+        {
+            //this will wait for the StartButton to be clicked
+            StartButton.Click();
+            //this will wait for the logo to disappear
+            Driver.WaitForObjectNotBePresent(By.NAME, "Image", timeout: 1, interval: 0.5);
+            Console.WriteLine("Logo has disappeared from main menu screen.");
+        }
+
     }
+
+    
 }
