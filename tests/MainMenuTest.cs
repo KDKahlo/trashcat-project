@@ -84,5 +84,12 @@ namespace trashcat_automation.tests
             MainMenuPage.StartButton.Click();
             MainMenuPage.WaitForObjectContainsButton();
         }
+        [Test, Order(11)]
+        public void ValidateUnloadImageDestroyed()
+        {
+            MainMenuPage.WaitForLogoToDisappear();
+
+            
+        }
     }
 }
