@@ -79,10 +79,23 @@ namespace trashcat_automation.pages
         public void FindImageAtCoordinates()
         {
             //this will find the object by the coordinates given, using FindObjectAtCoordinates AltTester fucntion.
-            var objectByCoordinates = Driver.FindObjectAtCoordinates(new AltVector2(534.0f,857.0f));
+            var objectByCoordinates = Driver.FindObjectAtCoordinates(new AltVector2(534.0f, 857.0f));
             //we will loop through
             Console.WriteLine(objectByCoordinates.name);
             Assert.NotNull(objectByCoordinates);
+        }
+        //this function will find and retrieve all active objects in the current game scene
+        public void GetAllEnabledObjects()
+        {
+            //this will find all the objects in the current scene
+            var allObjects = Driver.GetAllElements(enabled: true);
+            //we will loop through
+            foreach (var item in allObjects)
+            {
+                Console.WriteLine(item.name);
+            }
+            Console.WriteLine(allObjects.Count);
+            Assert.NotNull(allObjects);
         }
     }
 }

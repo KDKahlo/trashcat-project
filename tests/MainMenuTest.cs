@@ -52,5 +52,10 @@ namespace trashcat_automation.tests
         {
             MainMenuPage.FindImageAtCoordinates();
         }
+        [Test, Order(5)]
+        public void TestGetAllElements()
+        {
+            MainMenuPage.GetAllEnabledObjects();
+        }
     }
 }
