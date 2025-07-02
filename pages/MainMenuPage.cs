@@ -180,7 +180,10 @@ namespace trashcat_automation.pages
             Driver.WaitForObjectNotBePresent(By.NAME, "Image", timeout: 1, interval: 0.5);
             Console.WriteLine("Logo has disappeared from main menu screen.");
         }
-
+        public void StartButtonProperties()
+        {
+            Console.WriteLine($"StartButton Name: {StartButton.name}");
+        }
     }
 
     

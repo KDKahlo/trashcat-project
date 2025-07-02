@@ -74,7 +74,14 @@ namespace trashcat_automation.tests
                 Console.WriteLine(item.name);
             }
             Console.WriteLine(textObjects.Count);
-            
+
         }
+        [Test, Order(5)]
+
+        public void GetStartButtonProperties()
+        {
+            startPage.StartButtonProperties();
+        }
+        
     }
 }
