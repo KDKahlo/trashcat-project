@@ -12,6 +12,7 @@ namespace trashcat_automation.pages
         {
 
         }
+        //property methods section -- methods for pointers to find different objects in the game.
         //this will point the the startbutton at the start of the game, finding it by the name.
         public AltObject StartButton { get => Driver.FindObject(By.NAME, "StartButton"); }
         //this will point the the start text at the start of the game, finding it by the name.     
@@ -28,6 +29,8 @@ namespace trashcat_automation.pages
         //this will point to the Settings, finding it by the path.
         public AltObject Settings { get => Driver.WaitForObject(By.PATH, "/UICamera/Loadout/SettingsButton", timeout: 30); }
 
+        //this function will wait for an object that contains the text "Button" and return it.
+        public AltObject ObjectButton { get => Driver.WaitForObjectWhichContains(By.NAME, "Button", timeout: 30); }
 
         public bool IsDisplayed()
         {
