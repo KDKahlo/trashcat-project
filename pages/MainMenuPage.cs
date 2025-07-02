@@ -16,6 +16,18 @@ namespace trashcat_automation.pages
         public AltObject StartButton { get => Driver.FindObject(By.NAME, "StartButton"); }
         //this will point the the start text at the start of the game, finding it by the name.     
         public AltObject StartText { get => Driver.FindObject(By.NAME, "START"); }
+        //this will point the the leader board, finding it by the path.
+        public AltObject LeaderBoard { get => Driver.FindObject(By.PATH, "/UICamera/Loadout/OpenLeaderBoard"); }
+
+        //this will point to the Store, finding it by the path.
+        public AltObject Store { get => Driver.FindObject(By.PATH, "/UICamera/Loadout/StoreButton"); }
+
+        //this will point to the Missions, finding it by the path.
+        public AltObject Missions { get => Driver.FindObject(By.PATH, "/UICamera/Loadout/MissionsButton"); }
+
+        //this will point to the Settings, finding it by the path.
+        public AltObject Settings { get => Driver.FindObject(By.PATH, "/UICamera/Loadout/SettingsButton"); }
+
 
         public bool IsDisplayed()
         {
@@ -97,5 +109,45 @@ namespace trashcat_automation.pages
             Console.WriteLine(allObjects.Count);
             Assert.NotNull(allObjects);
         }
+        //this function will verify the Leaderboard is displayed
+        public void IsLeaderBoardDisplayed()
+        {
+            //this will check if the Leaderboard is displayed
+            if (LeaderBoard != null)
+            {
+                Console.WriteLine("Leaderboard is displayed.");
+            }
+            else
+            {
+                Console.WriteLine("Leaderboard is not displayed.");
+            }
+        }
+        //this function will verify the Store is displayed
+        public void IsStoreDisplayed()
+        {
+            //this will check if the Store is displayed
+            if (Store != null)
+            {
+                Console.WriteLine("Store is displayed.");
+            }
+            else
+            {
+                Console.WriteLine("Store is not displayed.");
+            }
+        }
+        //this function will verify the Missions is displayed
+        public void IsMissionsDisplayed()
+        {
+            //this will check if the Missions is displayed
+            if (Missions != null)
+            {
+                Console.WriteLine("Missions is displayed.");
+            }
+            else
+            {
+                Console.WriteLine("Missions is not displayed.");
+            }
+        }
+        //this function will verify the Settings is displayed
     }
 }
