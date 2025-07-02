@@ -47,5 +47,10 @@ namespace trashcat_automation.tests
         {
             MainMenuPage.FindAllObjectsWhichContainsButton();
         }
+        [Test, Order(4)]
+        public void GetImageAtScreenCoordinates()
+        {
+            MainMenuPage.FindImageAtCoordinates();
+        }
     }
 }

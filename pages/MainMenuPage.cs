@@ -75,6 +75,14 @@ namespace trashcat_automation.pages
             Console.WriteLine(buttonObjects.Count);
             Assert.NotNull(buttonObjects);
         }
-
+        //this function will find objects by the coordinates given for the object
+        public void FindImageAtCoordinates()
+        {
+            //this will find the object by the coordinates given, using FindObjectAtCoordinates AltTester fucntion.
+            var objectByCoordinates = Driver.FindObjectAtCoordinates(new AltVector2(534.0f,857.0f));
+            //we will loop through
+            Console.WriteLine(objectByCoordinates.name);
+            Assert.NotNull(objectByCoordinates);
+        }
     }
 }
