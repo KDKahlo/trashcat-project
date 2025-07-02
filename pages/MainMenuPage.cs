@@ -17,16 +17,16 @@ namespace trashcat_automation.pages
         //this will point the the start text at the start of the game, finding it by the name.     
         public AltObject StartText { get => Driver.FindObject(By.NAME, "START"); }
         //this will point the the leader board, finding it by the path.
-        public AltObject LeaderBoard { get => Driver.FindObject(By.PATH, "/UICamera/Loadout/OpenLeaderBoard"); }
+        public AltObject LeaderBoard { get => Driver.WaitForObject(By.PATH, "/UICamera/Loadout/OpenLeaderBoard"); }
 
         //this will point to the Store, finding it by the path.
-        public AltObject Store { get => Driver.FindObject(By.PATH, "/UICamera/Loadout/StoreButton"); }
+        public AltObject Store { get => Driver.WaitForObject(By.PATH, "/UICamera/Loadout/StoreButton"); }
 
         //this will point to the Missions, finding it by the path.
-        public AltObject Missions { get => Driver.FindObject(By.PATH, "/UICamera/Loadout/MissionsButton"); }
+        public AltObject Missions { get => Driver.WaitForObject(By.PATH, "/UICamera/Loadout/MissionsButton"); }
 
         //this will point to the Settings, finding it by the path.
-        public AltObject Settings { get => Driver.FindObject(By.PATH, "/UICamera/Loadout/SettingsButton"); }
+        public AltObject Settings { get => Driver.WaitForObject(By.PATH, "/UICamera/Loadout/SettingsButton"); }
 
 
         public bool IsDisplayed()
