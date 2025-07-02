@@ -57,5 +57,26 @@ namespace trashcat_automation.tests
         {
             MainMenuPage.GetAllEnabledObjects();
         }
+        [Test, Order(6)]
+        public void VerifyLeaderBoardDisplayed()
+        {
+            MainMenuPage.IsLeaderBoardDisplayed();
+        }
+        [Test, Order(7)]
+        public void VerifyStoreDisplayed()
+        {
+            MainMenuPage.IsStoreDisplayed();
+        }
+        [Test, Order(8)]
+                public void VerifyMissionsDisplayed()
+        {
+            MainMenuPage.IsMissionsDisplayed();
+        }
+
+              [Test, Order(9)]
+          public void VerifySettingsDisplayed()
+        {
+            MainMenuPage.IsSettingsDisplayed();
+        }
     }
 }
