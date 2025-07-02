@@ -32,5 +32,19 @@ namespace trashcat_automation.pages
         {
             StartButton.Tap();
         }
+    //this function will find text in the game without returning anything
+        public void FindTextObjects()
+        {
+            //where we store the text we want to find
+            string elementName = "Text";
+            //this line will find all the text we target on the screen
+            var textObjects = Driver.FindObjects(By.NAME, elementName);
+            //we will loop through
+            foreach(var item in textObjects)
+            {
+                Console.WriteLine(item.name);
+            }
+            Console.WriteLine(textObjects.Count);
+        }
     }
 }
