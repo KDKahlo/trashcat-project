@@ -32,7 +32,7 @@ namespace trashcat_automation.pages
         {
             StartButton.Tap();
         }
-    //this function will find text in the game without returning anything
+        //this function will find text in the game without returning anything
         public void FindTextObjects()
         {
             //where we store the text we want to find
@@ -40,11 +40,25 @@ namespace trashcat_automation.pages
             //this line will find all the text we target on the screen
             var textObjects = Driver.FindObjects(By.NAME, elementName);
             //we will loop through
-            foreach(var item in textObjects)
+            foreach (var item in textObjects)
             {
                 Console.WriteLine(item.name);
             }
             Console.WriteLine(textObjects.Count);
+        }
+
+        //this function will find an Object that contains Text "Button"
+        public void FindObjectContainsButton()
+        {
+            //where we store the text we want to find
+            string elementName = "Button";
+            //this line will find all the text we target on the screen
+            var buttonObject = Driver.FindObjectWhichContains(By.NAME, elementName);
+            //we will loop through
+            
+                Console.WriteLine(buttonObject.name);
+                Assert.NotNull(buttonObject);
+            
         }
     }
 }

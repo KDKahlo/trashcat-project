@@ -37,5 +37,10 @@ namespace trashcat_automation.tests
         {
             MainMenuPage.FindTextObjects();
         }
+        [Test, Order(2)]
+        public void GetObjectContainsButton()
+        {
+            MainMenuPage.FindObjectContainsButton();
+        }
     }
 }
