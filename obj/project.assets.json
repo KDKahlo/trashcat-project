@@ -1172,11 +1172,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kmdix\\OneDrive\\Desktop\\trashcat-project\\trashcat-project.csproj",
+      "projectUniqueName": "C:\\Users\\kmdix\\Documents\\Coding-Projects\\trashcat-project\\trashcat-project\\trashcat-project.csproj",
       "projectName": "trashcat-project",
-      "projectPath": "C:\\Users\\kmdix\\OneDrive\\Desktop\\trashcat-project\\trashcat-project.csproj",
+      "projectPath": "C:\\Users\\kmdix\\Documents\\Coding-Projects\\trashcat-project\\trashcat-project\\trashcat-project.csproj",
       "packagesPath": "C:\\Users\\kmdix\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kmdix\\OneDrive\\Desktop\\trashcat-project\\obj\\",
+      "outputPath": "C:\\Users\\kmdix\\Documents\\Coding-Projects\\trashcat-project\\trashcat-project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kmdix\\AppData\\Roaming\\NuGet\\NuGet.Config"

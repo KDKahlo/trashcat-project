@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6XXaChEH84g=",
+  "dgSpecHash": "ovT0n/8M31k=",
   "success": true,
-  "projectFilePath": "C:\\Users\\kmdix\\OneDrive\\Desktop\\trashcat-project\\trashcat-project.csproj",
+  "projectFilePath": "C:\\Users\\kmdix\\Documents\\Coding-Projects\\trashcat-project\\trashcat-project\\trashcat-project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kmdix\\.nuget\\packages\\alttester-driver\\2.1.2\\alttester-driver.2.1.2.nupkg.sha512",
     "C:\\Users\\kmdix\\.nuget\\packages\\altwebsocketsharp\\1.0.7\\altwebsocketsharp.1.0.7.nupkg.sha512",
