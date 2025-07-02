@@ -55,10 +55,26 @@ namespace trashcat_automation.pages
             //this line will find all the text we target on the screen
             var buttonObject = Driver.FindObjectWhichContains(By.NAME, elementName);
             //we will loop through
-            
-                Console.WriteLine(buttonObject.name);
-                Assert.NotNull(buttonObject);
-            
+
+            Console.WriteLine(buttonObject.name);
+            Assert.NotNull(buttonObject);
+
         }
+        //this function will find all objects that contain the text "Button"
+        public void FindAllObjectsWhichContainsButton()
+        {
+            //where we store the text we want to find
+            string elementName = "Button";
+            //this line will find all the text we target on the screen
+            var buttonObjects = Driver.FindObjectsWhichContain(By.NAME, elementName);
+            //we will loop through
+            foreach (var item in buttonObjects)
+            {
+                Console.WriteLine(item.name);
+            }
+            Console.WriteLine(buttonObjects.Count);
+            Assert.NotNull(buttonObjects);
+        }
+
     }
 }
