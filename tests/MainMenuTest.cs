@@ -13,7 +13,7 @@ namespace trashcat_automation.tests
         MainMenuPage MainMenuPage;
 
         //the Setup method tells the system this is needed first
-        [SetUp]
+        [OneTimeSetUp]
 
         public void SetUp()
         {
