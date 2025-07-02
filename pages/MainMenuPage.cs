@@ -149,5 +149,17 @@ namespace trashcat_automation.pages
             }
         }
         //this function will verify the Settings is displayed
+        public void IsSettingsDisplayed()
+        {
+            //this will check if the Settings is displayed
+            if (Settings != null)
+            {
+                Console.WriteLine("Settings is displayed.");
+            }
+            else
+            {
+                Console.WriteLine("Settings is not displayed.");
+            }
+        }
     }
 }
