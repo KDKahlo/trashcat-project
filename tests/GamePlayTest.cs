@@ -46,6 +46,10 @@ namespace trashcat_automation.tests
             Thread.Sleep(5000); // wait for jump to complete
             gamePlayPage.SlideComponentMethod(gamePlayPage.PlayerPivot);
             Thread.Sleep(5000); // wait for slide to complete
+            gamePlayPage.MoveRightComponentMethod(gamePlayPage.PlayerPivot);
+            Thread.Sleep(5000); // wait for move right to complete
+            gamePlayPage.MoveLeftComponentMethod(gamePlayPage.PlayerPivot);
+            Thread.Sleep(5000); // wait for move left to complete
         }
        
     }
