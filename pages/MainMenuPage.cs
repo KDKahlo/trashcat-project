@@ -183,6 +183,7 @@ namespace trashcat_automation.pages
         public void StartButtonProperties()
         {
             Console.WriteLine($"StartButton Name: {StartButton.name}");
+            Console.WriteLine($"X Coordinate: {StartButton.x}, Y Coordinate: {StartButton.y}");
         }
     }
 
