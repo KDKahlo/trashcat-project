@@ -103,5 +103,10 @@ namespace trashcat_automation.tests
             // This test will print the screen position of the Start button
 
         }
+        [Test, Order(9)]
+        public void GetStartButtonWorldPosition()
+        {
+            startPage.GetStartButtonWorldPosition();
+        }
     }
 }

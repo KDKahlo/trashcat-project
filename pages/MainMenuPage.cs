@@ -209,6 +209,14 @@ namespace trashcat_automation.pages
             Console.WriteLine($"StartButton Screen Position: X = {screenPosition.x}, Y = {screenPosition.y}");
             Assert.NotNull(screenPosition);
         }
+        public void GetStartButtonWorldPosition()
+        {
+            //this will get the world position of the StartButton
+            AltVector3 worldPosition = StartButton.GetWorldPosition();
+            //this will print the world position of the StartButton
+            Console.WriteLine($"StartButton World Position: X = {worldPosition.x}, Y = {worldPosition.y}, Z = {worldPosition.z}");
+            Assert.NotNull(worldPosition);
+        }
     }
 
     
