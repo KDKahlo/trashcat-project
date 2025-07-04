@@ -34,6 +34,14 @@ namespace trashcat_automation.tests
             //this comes from System.Threading at top of page. It is needed for Threading.
             Thread.Sleep(100);
         }
+        //this test will click the start button and test the the player is invincible and doesn't collide with any objects
+        //remember that you will need the method names from the developer or AltTester to call the methods correctly.
+        [Test, Order(1)]
+        public void ActivateCheat()
+        {
+            MainMenuPage.StartButton.Click();
+            gamePlayPage.CheatInvincibleComponentMethod();
+        }
        
     }
 }
