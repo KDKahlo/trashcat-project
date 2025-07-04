@@ -228,11 +228,17 @@ namespace trashcat_automation.pages
         public int GetStartButtonComponentProperty()
         {
             //this will get the font size of the StartButton
-           AltObject startButtonText = Driver.FindObject(By.PATH, "/UICamera/Loadout/StartButton/Text");
+            AltObject startButtonText = Driver.FindObject(By.PATH, "/UICamera/Loadout/StartButton/Text");
             //this will return the font size of the StartButton
             int buttonFontSize = startButtonText.GetComponentProperty<int>("UnityEngine.UI.Text", "fontSize", "UnityEngine.UI");
             Console.WriteLine($"StartButton Font Size: {buttonFontSize}");
             return buttonFontSize;
+        }
+        //this function will modify the start buttons font size property using SetComponentProperty()
+        public void ModifyComponentProperty()
+        {
+            AltObject startButtonText = Driver.FindObject(By.PATH, "/UICamera/Loadout/StartButton/Text");
+             startButtonText.SetComponentProperty("UnityEngine.UI.Text", "fontSize", 30, "UnityEngine.UI");
         }
     }
 

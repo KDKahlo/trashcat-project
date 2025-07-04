@@ -125,5 +125,14 @@ namespace trashcat_automation.tests
             Console.WriteLine($"Start Button Font Property: {fontProperty}");
             Assert.That(fontProperty, Is.EqualTo(90), "Font property should be 90.");
         }
+        [Test, Order(12)]
+        public void ValidateSetPropertyMethod()
+        {
+            // This test will validate that the SetProperty method works correctly
+            startPage.ModifyComponentProperty();
+            string modifiedText = startPage.StartButtonText();
+            Console.WriteLine($"Modified Start Button Text: {modifiedText}");
+            Assert.That(modifiedText, Is.EqualTo("Modified Start"), "Start button text did not change to 'Modified Start' after setting property.");
+        }
     }
 }
