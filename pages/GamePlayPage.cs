@@ -53,6 +53,23 @@ namespace trashcat_automation.pages
         {
             return PlayerPivot.GetComponentProperty<int>("PlayerPivotInputController", "CurrentLane", "Assembly-CSharp");
         }
+        //this function will allow the player to avoid all obstables in the game
+        public void AvoidAllObstacles()
+        {
+            var playerPivot = PlayerPivot;
+            List<AltObject> allObstacles;
+            List<AltObject> continueList = new List<AltObject>();
+            HashSet<string> handledObstacles = new HashSet<string>();
+            allObstacles = Driver.FindObjectsWhichContain(By.NAME, "Obstacle");
+            allObstacles.Sort((x, y) => x.worldZ == y.worldZ ? x.worldX.CompareTo(y.worldX) : x.worldZ.CompareTo(y.worldZ));
+            allObstacles.RemoveAll(obs => obs.worldZ < playerPivot.UpdateObject().worldZ);
+            continueList.AddRange(allObstacles);
+            //we need to make sure only new or unhandled obstacles are in the list. no duplicates
+            foreach (var obs in allObstacles)
+            {
+                handledObstacles.Add(Convert.ToString(obs.id));
+            }
+        }
     }
 
 
