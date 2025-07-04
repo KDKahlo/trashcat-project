@@ -222,7 +222,17 @@ namespace trashcat_automation.pages
         //object.CallComponentMethod<returnType>(componentName, methodName, assemblyName, parameters);
         public void StartButtonComponentMethod()
         {
-           StartButton.CallComponentMethod<AsyncVoidMethodBuilder>("UnityEngine.UI.Button", "Press", "UnityEngine.UI", new object[] { });
+            StartButton.CallComponentMethod<AsyncVoidMethodBuilder>("UnityEngine.UI.Button", "Press", "UnityEngine.UI", new object[] { });
+        }
+        //this function will allow us to use the GetComponentProperty method to get the font size of the StartButton
+        public int GetStartButtonComponentProperty()
+        {
+            //this will get the font size of the StartButton
+           AltObject startButtonText = Driver.FindObject(By.PATH, "/UICamera/Loadout/StartButton/Text");
+            //this will return the font size of the StartButton
+            int buttonFontSize = startButtonText.GetComponentProperty<int>("UnityEngine.UI.Text", "fontSize", "UnityEngine.UI");
+            Console.WriteLine($"StartButton Font Size: {buttonFontSize}");
+            return buttonFontSize;
         }
     }
 

@@ -115,7 +115,15 @@ namespace trashcat_automation.tests
         {
             // This test will validate that the Press component method works correctly
             startPage.StartButtonComponentMethod();
-         
+
+        }
+        [Test, Order(11)]
+        public void GetStartButtonFontProperty()
+        {
+            // This test will get the font property of the Start button
+            int fontProperty = startPage.GetStartButtonComponentProperty();
+            Console.WriteLine($"Start Button Font Property: {fontProperty}");
+            Assert.That(fontProperty, Is.EqualTo(90), "Font property should be 90.");
         }
     }
 }
