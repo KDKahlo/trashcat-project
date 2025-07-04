@@ -184,6 +184,7 @@ namespace trashcat_automation.pages
         {
             Console.WriteLine($"StartButton Name: {StartButton.name}");
             Console.WriteLine($"X Coordinate: {StartButton.x}, Y Coordinate: {StartButton.y}");
+            Console.WriteLine($"Start Button enabled state: {StartButton.enabled}");
         }
     }
 
