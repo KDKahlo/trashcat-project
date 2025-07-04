@@ -107,6 +107,15 @@ namespace trashcat_automation.tests
         public void GetStartButtonWorldPosition()
         {
             startPage.GetStartButtonWorldPosition();
+
+        }
+        [Test, Order(10)]
+
+        public void ValidatePressComponentMethod()
+        {
+            // This test will validate that the Press component method works correctly
+            startPage.StartButtonComponentMethod();
+         
         }
     }
 }

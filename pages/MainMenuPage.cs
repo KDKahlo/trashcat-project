@@ -1,5 +1,6 @@
 
 //Foundation class basepage this gives access to the namespaces classes and methods
+using System.Runtime.CompilerServices;
 using AltTester.AltTesterUnitySDK.Driver;
 
 
@@ -216,6 +217,12 @@ namespace trashcat_automation.pages
             //this will print the world position of the StartButton
             Console.WriteLine($"StartButton World Position: X = {worldPosition.x}, Y = {worldPosition.y}, Z = {worldPosition.z}");
             Assert.NotNull(worldPosition);
+        }
+        //this function will call on startbutton component 
+        //object.CallComponentMethod<returnType>(componentName, methodName, assemblyName, parameters);
+        public void StartButtonComponentMethod()
+        {
+           StartButton.CallComponentMethod<AsyncVoidMethodBuilder>("UnityEngine.UI.Button", "Press", "UnityEngine.UI", new object[] { });
         }
     }
 
