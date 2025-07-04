@@ -185,6 +185,13 @@ namespace trashcat_automation.pages
             Console.WriteLine($"StartButton Name: {StartButton.name}");
             Console.WriteLine($"X Coordinate: {StartButton.x}, Y Coordinate: {StartButton.y}");
             Console.WriteLine($"Start Button enabled state: {StartButton.enabled}");
+            Console.WriteLine($"Start Button World, X = {StartButton.worldX}, Y= {StartButton.worldY}, Z = {StartButton.worldZ}");
+        }
+        public string StartButtonText()
+        {
+            AltObject ButtonTextObject = Driver.FindObject(By.PATH, "/UICamera/Loadout/StartButton/Text");
+            //this will return the text of the StartButton
+            return ButtonTextObject.GetText();
         }
     }
 

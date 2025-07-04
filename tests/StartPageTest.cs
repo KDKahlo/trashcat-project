@@ -82,6 +82,13 @@ namespace trashcat_automation.tests
         {
             startPage.StartButtonProperties();
         }
-        
+        [Test, Order(6)]
+
+        public void GetStartButtonText()
+        {
+            string buttonText = startPage.StartButtonText();
+            Console.WriteLine($"Start Button Text: {buttonText}");
+            Assert.That(buttonText, Is.EqualTo("START"), "Start button text did not match expected value.");
+        }
     }
 }
