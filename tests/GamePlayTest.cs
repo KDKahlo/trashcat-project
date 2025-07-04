@@ -41,6 +41,11 @@ namespace trashcat_automation.tests
         {
             MainMenuPage.StartButton.Click();
             gamePlayPage.CheatInvincibleComponentMethod();
+            Thread.Sleep(6000);// will wait for invincibility to activate
+            gamePlayPage.JumpComponentMethod(gamePlayPage.PlayerPivot);
+            Thread.Sleep(5000); // wait for jump to complete
+            gamePlayPage.SlideComponentMethod(gamePlayPage.PlayerPivot);
+            Thread.Sleep(5000); // wait for slide to complete
         }
        
     }
