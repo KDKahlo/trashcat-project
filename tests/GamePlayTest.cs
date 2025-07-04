@@ -50,6 +50,9 @@ namespace trashcat_automation.tests
             Thread.Sleep(5000); // wait for move right to complete
             gamePlayPage.MoveLeftComponentMethod(gamePlayPage.PlayerPivot);
             Thread.Sleep(5000); // wait for move left to complete
+            Console.WriteLine("Player Current Life: " + gamePlayPage.GetPlayerCurrentLife());
+            Console.WriteLine("Player Current Speed: " + gamePlayPage.GetPlayerCurrentSpeed());
+            Console.WriteLine("Player Current Lane: " + gamePlayPage.GetPlayerCurrentLane());
         }
        
     }

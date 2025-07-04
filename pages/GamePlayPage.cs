@@ -38,6 +38,22 @@ namespace trashcat_automation.pages
             PlayerPivot.CallComponentMethod<string>("PlayerPivotInputController", "MoveLeft", "Assembly-CSharp", new object[] { "-1" });
 
         }
+        //this function will give us access to current life property of the player
+        public int GetPlayerCurrentLife()
+        {
+            return PlayerPivot.GetComponentProperty<int>("PlayerPivotInputController", "CurrentLife", "Assembly-CSharp");
+        }
+        //this function will give us access to current speed property of the player
+        public float GetPlayerCurrentSpeed()
+        {
+            return PlayerPivot.UpdateObject().GetComponentProperty<float>("PlayerPivotInputController", "CurrentSpeed", "Assembly-CSharp");
+        }
+        //this function will give us access to current lane property of the player
+        public int GetPlayerCurrentLane()
+        {
+            return PlayerPivot.GetComponentProperty<int>("PlayerPivotInputController", "CurrentLane", "Assembly-CSharp");
+        }
     }
+
 
 }
