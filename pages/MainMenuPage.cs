@@ -193,6 +193,13 @@ namespace trashcat_automation.pages
             //this will return the text of the StartButton
             return ButtonTextObject.GetText();
         }
+        public string ModifyStartButtonText()
+        {
+            string newText = "Sprint";
+             AltObject ButtonTextObject = Driver.FindObject(By.PATH, "/UICamera/Loadout/StartButton/Text").SetText(newText, true);
+            //this will return the text of the StartButton
+            return ButtonTextObject.GetText();
+        }
     }
 
     
