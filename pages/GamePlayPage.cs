@@ -15,8 +15,21 @@ namespace trashcat_automation.pages
         //Component method cheat invincible
         public void CheatInvincibleComponentMethod()
         {
-            PlayerPivot.CallComponentMethod<string>("PlayerPivotInputController","CheatInvincible", "Assembly-CSharp", new object[] {"true"});
+            PlayerPivot.CallComponentMethod<string>("PlayerPivotInputController", "CheatInvincible", "Assembly-CSharp", new object[] { "true" });
         }
+        //component method jump
+        public void JumpComponentMethod(AltObject PlayerPivot)
+        {
+            PlayerPivot.CallComponentMethod<string>("PlayerPivotInputController", "Jump", "Assembly-CSharp", new object[] { });
+        }
+        //component method slide
+        public void SlideComponentMethod(AltObject PlayerPivot)
+        {
+            PlayerPivot.CallComponentMethod<string>("PlayerPivotInputController", "Slide", "Assembly-CSharp", new object[] { });
+        }
+        //component method moveright
+        //component method moveleft
+
     }
 }
 
