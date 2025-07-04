@@ -91,9 +91,17 @@ namespace trashcat_automation.tests
             Assert.That(buttonText, Is.EqualTo("START"), "Start button text did not match expected value.");
         }
         [Test, Order(7)]
-        public void GetModifiedModifiedButtonText() {
+        public void GetModifiedModifiedButtonText()
+        {
             string modifiedButtonText = startPage.ModifyStartButtonText();
             Console.WriteLine($"Modified Start Button Text: {modifiedButtonText}");
+        }
+        [Test, Order(8)]
+        public void GetButtonScreenPosition()
+        {
+            startPage.GetStartButtonScreenPosition();
+            // This test will print the screen position of the Start button
+
         }
     }
 }

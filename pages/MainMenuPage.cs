@@ -196,9 +196,18 @@ namespace trashcat_automation.pages
         public string ModifyStartButtonText()
         {
             string newText = "Sprint";
-             AltObject ButtonTextObject = Driver.FindObject(By.PATH, "/UICamera/Loadout/StartButton/Text").SetText(newText, true);
+            AltObject ButtonTextObject = Driver.FindObject(By.PATH, "/UICamera/Loadout/StartButton/Text").SetText(newText, true);
             //this will return the text of the StartButton
             return ButtonTextObject.GetText();
+        }
+        //this function will get the coordinated of an object by its name
+        public void GetStartButtonScreenPosition()
+        {
+            //this will get the screen position of the StartButton
+            AltVector2 screenPosition = StartButton.GetScreenPosition();
+            //this will print the screen position of the StartButton
+            Console.WriteLine($"StartButton Screen Position: X = {screenPosition.x}, Y = {screenPosition.y}");
+            Assert.NotNull(screenPosition);
         }
     }
 
