@@ -1,4 +1,5 @@
 using System;
+using System.Linq.Expressions;
 using System.Reflection.PortableExecutable;
 using AltTester.AltTesterUnitySDK.Driver;
 
@@ -53,6 +54,83 @@ namespace trashcat_automation.pages
         {
             return PlayerPivot.GetComponentProperty<int>("PlayerPivotInputController", "CurrentLane", "Assembly-CSharp");
         }
+
+        //this function will fetch the current obstacle and the 2nd and 3rd obstacles in the list.
+        public void FetchingObstacles(int k, List<AltObject> continueList, List<AltObject> allObstacles, HashSet<string> handledObstacles)
+        {
+            for (int i = k + 3; i >= k; i--)
+            {
+                try
+                {
+                    if (continueList[i] == null)
+                    {
+                        Console.WriteLine($"Obstacle at index {i} is null.");
+                    }
+                    else if (continueList[i] != null)
+                    {
+                        break;
+                    }
+                }
+                catch (System.ArgumentOutOfRangeException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    try
+                    {
+                        if (i - 1 >= 0 && continueList[i - 1] == null)
+                        {
+                            Console.WriteLine($"Obstacle at index {i - 1} is also null and continuing to the next iteration.");
+                        }
+                        else if (continueList[i - 1] != null)
+                        {
+                            Console.WriteLine($"Obstacle at index {i - 1} is not null and fetching new obstacle.");
+                            allObstacles = Driver.FindObjectsWhichContain(By.NAME, "Obstacle");
+                            Console.WriteLine("Fetching Obstacles");
+
+                            while (allObstacles.Count <= 3) ;
+                            try
+                            {
+                                allObstacles.Sort((x, y) => x.worldZ == y.worldZ ? x.worldX.CompareTo(y.worldX) : x.worldZ.CompareTo(y.worldZ));
+                                //this code will filter the null valued obstacles already present in the handledObstables list, ensuring only new obstacles are added.  
+                                var filterObstacles = allObstacles.Where(obs => obs != null && !handledObstacles.Contains(Convert.ToString(obs.id))).ToList();
+
+                                if (filterObstacles.Count > 0)
+                                {
+                                    continueList.AddRange(filterObstacles);
+                                    Console.WriteLine($"Added {filterObstacles.Count} new obstacles to the continue list.");
+
+                                    foreach (var obs in filterObstacles)
+                                    {
+                                        handledObstacles.Add(Convert.ToString(obs.id));
+                                        Console.WriteLine($"Obstacle {filterObstacles.Count} added to handled obstacles.");
+                                        break;
+                                    }
+                                }
+                                else if (filterObstacles.Count == 0)
+                                {
+                                    Console.WriteLine("No new obstacles found to add to the continue list, need to fetch again.");
+                                    FetchingObstacles(i, continueList, allObstacles, handledObstacles);
+                                }
+                                                                 
+        
+                            }
+                            catch (System.Exception processingEx)
+                            {
+                                Console.WriteLine($"An error occurred while processing obstacles: {processingEx.Message}");
+                                // Optionally, you can rethrow the exception or handle it as needed
+                                throw;
+                            }
+                            
+                        }
+
+                    }
+                    catch (System.Exception)
+                    {
+                       continue;
+                    }
+                    
+                }
+            }
+        }
         //this function will allow the player to avoid all obstables in the game
         public void AvoidAllObstacles()
         {
@@ -73,9 +151,11 @@ namespace trashcat_automation.pages
             //and track the current obstacle and the next obstacle
             for (int k = 0; k < continueList.Count; k++)
             {
+                // AltObject? nextObstacle;
                 Console.WriteLine($"List count: {continueList.Count}");
+                FetchingObstacles(k, continueList, allObstacles, handledObstacles);
             }
-            
+
 
         }
 
