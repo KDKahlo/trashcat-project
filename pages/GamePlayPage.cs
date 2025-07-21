@@ -69,7 +69,21 @@ namespace trashcat_automation.pages
             {
                 handledObstacles.Add(Convert.ToString(obs.id));
             }
+            //this part of the function will loop through the current list of obstacles 
+            //and track the current obstacle and the next obstacle
+            for (int k = 0; k < continueList.Count; k++)
+            {
+                Console.WriteLine($"List count: {continueList.Count}");
+            }
+            
+
         }
+
+
+        //this function will track both the current obstacle and the next obstacle on the list
+
+        //this function will check if game play in current list is nearing its end
+
     }
 
 
