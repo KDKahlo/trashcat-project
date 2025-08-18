@@ -160,6 +160,36 @@ namespace trashcat_automation.pages
                 return 5.0f;
             }
         }
+
+
+
+        public float WrappedObstacleZ(AltObject obstacle)
+        {
+            float newObstacleWorldZ = 0.0f;
+            if (obstacle.worldZ >= 100.0f)
+            {
+                newObstacleWorldZ = obstacle.worldZ % 100;
+                Console.WriteLine($"Obstacle new higher worldZ : {newObstacleWorldZ}");
+                return newObstacleWorldZ;
+            }
+            else if (obstacle.worldZ < 0.0f)
+            {
+                newObstacleWorldZ = obstacle.worldZ + 100;
+                Console.WriteLine($"Obstacle new negative worldZ : {newObstacleWorldZ}");
+                return newObstacleWorldZ;
+            }
+            else if (obstacle.worldZ > 0.0f && obstacle.worldZ < 100.0f) 
+            {
+                newObstacleWorldZ = obstacle.worldZ;
+                Console.WriteLine($"Obstacle new worldZ: {newObstacleWorldZ}");
+                return newObstacleWorldZ;
+            }
+            else
+            {
+                Console.WriteLine("Obstacle worldZ is not in the expected range.");
+                return newObstacleWorldZ; 
+            }
+        }
         //this function will allow the player to avoid all obstables in the game
         public void AvoidAllObstacles()
         {
@@ -194,7 +224,12 @@ namespace trashcat_automation.pages
 
                 var jumpDistance = JumpDistance(GetPlayerCurrentSpeed(player));
 
-                
+                if (obstacle.name == "ObstacleRat(Clone)" || obstacle.name == "ObstacleLowBarrier(Clone)" || obstacle.name == "ObstacleHighBarrier(Clone)")
+                {
+
+                }
+
+
             }
 
 
