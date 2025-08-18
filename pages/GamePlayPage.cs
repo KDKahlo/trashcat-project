@@ -226,7 +226,8 @@ namespace trashcat_automation.pages
 
                 if (obstacle.name == "ObstacleRat(Clone)" || obstacle.name == "ObstacleLowBarrier(Clone)" || obstacle.name == "ObstacleHighBarrier(Clone)")
                 {
-
+                    var newObstacleWorldZ = WrappedObstacleZ(obstacle);
+                    float distance = (newObstacleWorldZ - player.UpdateObject().worldZ +100) % 100;    
                 }
 
 
