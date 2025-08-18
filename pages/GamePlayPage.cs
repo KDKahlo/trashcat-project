@@ -247,6 +247,20 @@ namespace trashcat_automation.pages
             return Math.Min(directDisance, wrappedDistance);
         }
         //this function will allow the player to avoid all obstables in the game
+
+        public void PlayerCrossesTheObstacle(AltObject obstacle, AltObject player)
+        {
+            var newObstacleWorldZ = WrappedObstacleZ(obstacle);
+            while (GetWrappedDistance(player.UpdateObject().worldZ, newObstacleWorldZ) > 3f && GetPlayerCurrentLife() != 0)
+            {
+                if (newObstacleWorldZ < player.UpdateObject().worldZ)
+                {
+                    Console.WriteLine($"Obstacle hits while moving. Continuing to move forward.");
+                    break;
+                }
+               
+            }
+        }
         public void AvoidAllObstacles()
         {
             var player = PlayerPivot;
@@ -266,6 +280,7 @@ namespace trashcat_automation.pages
             //and track the current obstacle and the next obstacle
             for (int k = 0; k < continueList.Count; k++)
             {
+                var life = GetPlayerCurrentLife();
                 AltObject? nextObstacle;
                 Console.WriteLine($"List count: {continueList.Count}");
                 FetchingObstacles(k, continueList, allObstacles, handledObstacles);
@@ -314,6 +329,28 @@ namespace trashcat_automation.pages
                                 break;
                         }
                     }
+                    if (life == GetPlayerCurrentLife())
+                    {
+                        HandleObstacleBeyondZero(obstacle, player.UpdateObject());
+                        if (GetPlayerCurrentLife() == 0)
+                        {
+                            Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                            break;
+                        }
+                        continue;
+                    }
+                    else if (life != GetPlayerCurrentLife())
+                    {
+                        PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
+                        if (GetPlayerCurrentLife() == 0)
+                        {
+                            Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                            break;
+                        }
+                        continue;
+                    }
+
+
                 }
 
 
