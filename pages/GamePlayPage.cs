@@ -349,14 +349,24 @@ namespace trashcat_automation.pages
                         }
                         continue;
                     }
-
-
-                }
-
-
+                    else if (GetPlayerCurrentLife() == 0)
+                    {
+                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                        break;
+                    }
+                  }
+              else if (life != GetPlayerCurrentLife())
+                    {
+                        HandleObstacleBeyondZero(obstacle, player.UpdateObject());
+                        if (GetPlayerCurrentLife() == 0)
+                        {
+                            Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                            break;
+                        }
+                        continue;
+                    }
             }
-
-
+         
         }
 
 
