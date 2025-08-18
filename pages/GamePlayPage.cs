@@ -145,19 +145,31 @@ namespace trashcat_automation.pages
             }
             else if (speed > 14f)
             {
-               return 6.0f; 
+                return 6.0f;
+            }
+            else if (speed > 11f)
+            {
+                return 5.0f;
+            }
+            else if (speed > 10f)
+            {
+                return 4.5f;
+            }
+            else
+            {
+                return 5.0f;
             }
         }
         //this function will allow the player to avoid all obstables in the game
         public void AvoidAllObstacles()
         {
-            var playerPivot = PlayerPivot;
+            var player = PlayerPivot;
             List<AltObject> allObstacles;
             List<AltObject> continueList = new List<AltObject>();
             HashSet<string> handledObstacles = new HashSet<string>();
             allObstacles = Driver.FindObjectsWhichContain(By.NAME, "Obstacle");
             allObstacles.Sort((x, y) => x.worldZ == y.worldZ ? x.worldX.CompareTo(y.worldX) : x.worldZ.CompareTo(y.worldZ));
-            allObstacles.RemoveAll(obs => obs.worldZ < playerPivot.UpdateObject().worldZ);
+            allObstacles.RemoveAll(obs => obs.worldZ < player.UpdateObject().worldZ);
             continueList.AddRange(allObstacles);
             //we need to make sure only new or unhandled obstacles are in the list. no duplicates
             foreach (var obs in allObstacles)
@@ -178,7 +190,11 @@ namespace trashcat_automation.pages
                 Console.WriteLine($"current Obstacle id: {obstacle.id}");
                 Console.WriteLine($"current Obstacle index: {k}");
                 Console.WriteLine($"current Obstacle X value: {obstacle.worldX}");
-                Console.WriteLine($"character current speed: {GetPlayerCurrentSpeed(playerPivot)}");
+                Console.WriteLine($"character current speed: {GetPlayerCurrentSpeed(player)}");
+
+                var jumpDistance = JumpDistance(GetPlayerCurrentSpeed(player));
+
+                
             }
 
 
