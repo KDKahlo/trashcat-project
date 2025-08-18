@@ -227,7 +227,33 @@ namespace trashcat_automation.pages
                 if (obstacle.name == "ObstacleRat(Clone)" || obstacle.name == "ObstacleLowBarrier(Clone)" || obstacle.name == "ObstacleHighBarrier(Clone)")
                 {
                     var newObstacleWorldZ = WrappedObstacleZ(obstacle);
-                    float distance = (newObstacleWorldZ - player.UpdateObject().worldZ +100) % 100;    
+                    float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+
+                    if (distance > 0 && distance <= 90)
+                    {
+                        while (distance >= jumpDistance)
+                        {
+                            Console.WriteLine("Approach upcoming obstacle");
+                            distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                        }
+                    }
+                    if (distance < jumpDistance && distance > 0) {
+                        switch (obstacle.name)
+                        {
+                            case "ObstacleRat(Clone)":
+                                Console.WriteLine("Jumping over Rat obstacle");
+                                JumpComponentMethod(player);
+                                break;
+                            case "ObstacleLowBarrier(Clone)":
+                                Console.WriteLine("Jumping over Low Barrier obstacle");
+                                JumpComponentMethod(player);
+                                break;
+                            case "ObstacleHighBarrier(Clone)":
+                            Console.WriteLine("sliding under high barrier obstacle");
+                            SlideComponentMethod(player);
+                            break;
+                      }
+                    } 
                 }
 
 
