@@ -190,6 +190,62 @@ namespace trashcat_automation.pages
                 return newObstacleWorldZ; 
             }
         }
+
+        public void HandleObstacleBeyondZero(AltObject obstacle, AltObject player)
+        {
+            var newObstacleWorldZ = WrappedObstacleZ(obstacle);
+            if (newObstacleWorldZ < player.UpdateObject().worldZ)
+            {
+                while (player.UpdateObject().worldZ >= 0f)
+                {
+                    Console.WriteLine("Obstacle is beyond zero, waiting for player to move forward.");
+                    Console.WriteLine($"Obstacle worldZ: {newObstacleWorldZ - player.UpdateObject().worldZ}");
+                    if (player.UpdateObject().worldZ >= 0f)
+                    {
+                        Console.WriteLine("Player is moving forward, obstacle is now in range.");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Player is not moving forward, obstacle is still beyond zero.");
+                        System.Threading.Thread.Sleep(1000); // Wait for a second before checking again
+                    }
+                }
+            }
+            if (newObstacleWorldZ >= player.UpdateObject().worldZ)
+            {
+                while (player.UpdateObject().worldZ >= 0f)
+                {
+                    Console.WriteLine("Obstacle is not beyond zero, player is moving forward.");
+                    Console.WriteLine($"Obstacle worldZ: {newObstacleWorldZ - player.UpdateObject().worldZ}");
+                    if (player.UpdateObject().worldZ >= 0f)
+                    {
+                        Console.WriteLine("Player is moving forward, obstacle is now in range.");
+                        break;
+                    }
+
+                }
+            }
+            if (newObstacleWorldZ > player.UpdateObject().worldZ){
+                while (GetWrappedDistance(player.UpdateObject().worldZ, newObstacleWorldZ) > 3f && GetPlayerCurrentLife() != 0)
+                {
+                Console.WriteLine("Obstacle is beyond zero, waiting for player to move forward.");
+                Console.WriteLine($"Obstacle worldZ: {newObstacleWorldZ - player.UpdateObject().worldZ}");
+             } 
+            }
+
+        }
+        public float GetWrappedDistance(float playerWorldZ, float target)
+        {
+            const float maxZ = 100f;
+            float directDisance = target - playerWorldZ;
+            if (directDisance < 0)
+            {
+                directDisance += maxZ;
+            }
+            float wrappedDistance = maxZ - directDisance;
+            return Math.Min(directDisance, wrappedDistance);
+        }
         //this function will allow the player to avoid all obstables in the game
         public void AvoidAllObstacles()
         {
@@ -237,7 +293,8 @@ namespace trashcat_automation.pages
                             distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
                         }
                     }
-                    if (distance < jumpDistance && distance > 0) {
+                    if (distance < jumpDistance && distance > 0)
+                    {
                         switch (obstacle.name)
                         {
                             case "ObstacleRat(Clone)":
@@ -249,11 +306,14 @@ namespace trashcat_automation.pages
                                 JumpComponentMethod(player);
                                 break;
                             case "ObstacleHighBarrier(Clone)":
-                            Console.WriteLine("sliding under high barrier obstacle");
-                            SlideComponentMethod(player);
-                            break;
-                      }
-                    } 
+                                Console.WriteLine("sliding under high barrier obstacle");
+                                SlideComponentMethod(player);
+                                break;
+                            default:
+                                Console.WriteLine("Unknown obstacle type, cannot jump or slide.");
+                                break;
+                        }
+                    }
                 }
 
 
