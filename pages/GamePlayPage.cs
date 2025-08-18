@@ -45,7 +45,7 @@ namespace trashcat_automation.pages
             return PlayerPivot.GetComponentProperty<int>("PlayerPivotInputController", "CurrentLife", "Assembly-CSharp");
         }
         //this function will give us access to current speed property of the player
-        public float GetPlayerCurrentSpeed()
+        public float GetPlayerCurrentSpeed(AltObject playerPivot)
         {
             return PlayerPivot.UpdateObject().GetComponentProperty<float>("PlayerPivotInputController", "CurrentSpeed", "Assembly-CSharp");
         }
@@ -131,6 +131,23 @@ namespace trashcat_automation.pages
                 }
             }
         }
+        //this function will return the jump distance based on the current speed of the player
+        public float JumpDistance(float speed)
+        {
+            if (speed > 18f)
+            {
+                return 8.0f;
+            }
+
+            else if (speed > 15f)
+            {
+                return 7.0f;
+            }
+            else if (speed > 14f)
+            {
+               return 6.0f; 
+            }
+        }
         //this function will allow the player to avoid all obstables in the game
         public void AvoidAllObstacles()
         {
@@ -151,9 +168,17 @@ namespace trashcat_automation.pages
             //and track the current obstacle and the next obstacle
             for (int k = 0; k < continueList.Count; k++)
             {
-                // AltObject? nextObstacle;
+                AltObject? nextObstacle;
                 Console.WriteLine($"List count: {continueList.Count}");
                 FetchingObstacles(k, continueList, allObstacles, handledObstacles);
+                var obstacle = continueList[k];
+                nextObstacle = continueList[k + 1];
+                AltObject? nextToNextObstacle = k < continueList.Count - 2 ? continueList[k + 2] : null;
+                Console.WriteLine($"Current Obstacle name: {obstacle.name}");
+                Console.WriteLine($"current Obstacle id: {obstacle.id}");
+                Console.WriteLine($"current Obstacle index: {k}");
+                Console.WriteLine($"current Obstacle X value: {obstacle.worldX}");
+                Console.WriteLine($"character current speed: {GetPlayerCurrentSpeed(playerPivot)}");
             }
 
 
