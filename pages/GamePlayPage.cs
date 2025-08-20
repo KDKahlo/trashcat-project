@@ -1584,8 +1584,7 @@ namespace trashcat_automation.pages
                                     {
                                         Console.WriteLine("Obstacle is in player's path, and left lane, move right once.");
                                         MoveRightComponentMethod(player);
-                                        // Thread.Sleep(20);
-                                        // MoveRightComponentMethod(player);
+                                       
 
                                         if (life == GetPlayerCurrentLife())
                                         {
@@ -1630,7 +1629,7 @@ namespace trashcat_automation.pages
                                     }
                                 }
                             }
-//if statement with obstacles in left lane and right lane, with player in left lane.
+//if statement with obstacles in left lane and right lane, with player in middle lane.
                             else if (obstacle.worldX == -1.5f && nextObstacle.worldX == 1.5f)
                             {
                                  float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
@@ -1643,10 +1642,8 @@ namespace trashcat_automation.pages
                                     }
                                     if (distance < 8.5f && distance > 0f)
                                     {
-                                        Console.WriteLine("Obstacle is in player's path, and right lane, move right once.");
-                                        MoveRightComponentMethod(player);
-                                        // Thread.Sleep(20);
-                                        // MoveRightComponentMethod(player);
+                                        Console.WriteLine("Obstacle is not in player's path, don't move.");
+                                      
 
                                         if (life == GetPlayerCurrentLife())
                                         {
@@ -1691,7 +1688,7 @@ namespace trashcat_automation.pages
                                     }
                                 }
                             }
-//if statement with obstacles in middle lane and right lane, with player in left lane.                                                         
+//if statement with obstacles in middle lane and right lane, with player in middle lane.                                                         
                             else if (obstacle.worldX == 0.0f && nextObstacle.worldX == 1.5f)
                             {
                                  float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
@@ -1704,8 +1701,8 @@ namespace trashcat_automation.pages
                                     }
                                     if (distance < 8.5f && distance > 0f)
                                     {
-                                        Console.WriteLine("Obstacle is not in player's path, don't move.");
-                                        
+                                        Console.WriteLine("Obstacle is in player's path, move left once.");
+                                        MoveLeftComponentMethod(player);
 
                                         if (life == GetPlayerCurrentLife())
                                         {
@@ -1768,9 +1765,7 @@ namespace trashcat_automation.pages
                                     if (distance < 8.5f && distance > 0f)
                                     {
                                         Console.WriteLine("Obstacle is not in player's path, don't move.");
-                                        // MoveRightComponentMethod(player);
-                                        // Thread.Sleep(20);
-                                        // MoveRightComponentMethod(player);
+                                      
 
                                         if (life == GetPlayerCurrentLife())
                                         {
