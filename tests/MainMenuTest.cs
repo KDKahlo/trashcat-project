@@ -4,13 +4,14 @@ using AltTester.AltTesterUnitySDK.Driver;
 using trashcat_automation.pages;
 using NUnit.Framework;
 using Allure.NUnit;
+using System.Linq.Expressions;
 
 namespace trashcat_automation.tests
 {
     //code necessary for Allure reporting
     [TestFixture]
     [AllureNUnit]
-    
+
     public class MainMenuTest
     {
         AltDriver Driver;
@@ -91,9 +92,17 @@ namespace trashcat_automation.tests
         [Test, Order(11)]
         public void ValidateUnloadImageDestroyed()
         {
-            MainMenuPage.WaitForLogoToDisappear();
-
-
+            try
+            {
+                MainMenuPage.WaitForLogoToDisappear();
+            }
+            catch (System.Exception)
+            {
+                string name = "unloadImageDestroyed.png";
+                MainMenuPage.GetScreenShot(name);
+                throw;
+            }
         }
+
     }
 }
