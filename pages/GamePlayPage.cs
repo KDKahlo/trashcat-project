@@ -1408,6 +1408,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                            k += 1;
                                             continue;
                                         }
                                         else if (life != GetPlayerCurrentLife())
@@ -1418,6 +1419,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                            k += 1;
                                             continue;
                                         }
                                         else if (GetPlayerCurrentLife() == 0)
@@ -1425,6 +1427,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                        k += 1;
                                         continue;
                                     }
                                     else if (life != GetPlayerCurrentLife())
@@ -1435,6 +1438,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                        k += 1;
                                         continue;
                                     }
                                 }
@@ -1465,6 +1469,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                            k += 1;
                                             continue;
                                         }
                                         else if (life != GetPlayerCurrentLife())
@@ -1475,6 +1480,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                            k += 1;
                                             continue;
                                         }
                                         else if (GetPlayerCurrentLife() == 0)
@@ -1482,6 +1488,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                        k += 1;
                                         continue;
                                     }
                                     else if (life != GetPlayerCurrentLife())
@@ -1492,6 +1499,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                        k += 1;
                                         continue;
                                     }
                                 }
@@ -1522,6 +1530,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                            k += 1;
                                             continue;
                                         }
                                         else if (life != GetPlayerCurrentLife())
@@ -1532,6 +1541,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                            k += 1;
                                             continue;
                                         }
                                         else if (GetPlayerCurrentLife() == 0)
@@ -1539,6 +1549,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                        k += 1;
                                         continue;
                                     }
                                     else if (life != GetPlayerCurrentLife())
@@ -1549,6 +1560,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                        k += 1;
                                         continue;
                                     }
                                 }
@@ -1583,6 +1595,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                            k += 1;
                                             continue;
                                         }
                                         else if (life != GetPlayerCurrentLife())
@@ -1593,6 +1606,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                            k += 1;
                                             continue;
                                         }
                                         else if (GetPlayerCurrentLife() == 0)
@@ -1600,6 +1614,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                        k += 1;
                                         continue;
                                     }
                                     else if (life != GetPlayerCurrentLife())
@@ -1610,6 +1625,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                        k += 1;
                                         continue;
                                     }
                                 }
@@ -1640,6 +1656,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                            k += 1;
                                             continue;
                                         }
                                         else if (life != GetPlayerCurrentLife())
@@ -1650,6 +1667,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+
                                             continue;
                                         }
                                         else if (GetPlayerCurrentLife() == 0)
@@ -1657,6 +1675,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                           k += 1;
                                         continue;
                                     }
                                     else if (life != GetPlayerCurrentLife())
@@ -1667,6 +1686,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                         k += 1;
                                         continue;
                                     }
                                 }
@@ -1685,9 +1705,7 @@ namespace trashcat_automation.pages
                                     if (distance < 8.5f && distance > 0f)
                                     {
                                         Console.WriteLine("Obstacle is not in player's path, don't move.");
-                                        // MoveRightComponentMethod(player);
-                                        // Thread.Sleep(20);
-                                        // MoveRightComponentMethod(player);
+                                        
 
                                         if (life == GetPlayerCurrentLife())
                                         {
@@ -1697,6 +1715,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                             k += 1;
                                             continue;
                                         }
                                         else if (life != GetPlayerCurrentLife())
@@ -1707,6 +1726,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                             k += 1;
                                             continue;
                                         }
                                         else if (GetPlayerCurrentLife() == 0)
@@ -1714,6 +1734,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                         k += 1;
                                         continue;
                                     }
                                     else if (life != GetPlayerCurrentLife())
@@ -1724,6 +1745,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                         k += 1;
                                         continue;
                                     }
                                 }
@@ -1814,6 +1836,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                             k += 1;
                                             continue;
                                         }
                                         else if (life != GetPlayerCurrentLife())
@@ -1824,6 +1847,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                             k += 1;
                                             continue;
                                         }
                                         else if (GetPlayerCurrentLife() == 0)
@@ -1831,6 +1855,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                         k += 1;
                                         continue;
                                     }
                                     else if (life != GetPlayerCurrentLife())
@@ -1841,6 +1866,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                         k += 1;
                                         continue;
                                     }
                                 }
@@ -1871,6 +1897,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                             k += 1;
                                             continue;
                                         }
                                         else if (life != GetPlayerCurrentLife())
@@ -1881,6 +1908,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
+                                             k += 1;
                                             continue;
                                         }
                                         else if (GetPlayerCurrentLife() == 0)
@@ -1888,6 +1916,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                         k += 1;
                                         continue;
                                     }
                                     else if (life != GetPlayerCurrentLife())
@@ -1898,6 +1927,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
+                                         k += 1;
                                         continue;
                                     }
                                 }
