@@ -879,22 +879,49 @@ namespace trashcat_automation.pages
                     {
                         if (GetPlayerCurrentLane(player.UpdateObject()) == 0)
                         {
-                        if (obstacle.worldX == -1.5f)
-                        {
-                            float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                            if (distance > 0f && distance <= 90f)
+                            if (obstacle.worldX == -1.5f)
                             {
-                                while (distance >= 8.5f)
+                                float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                if (distance > 0f && distance <= 90f)
                                 {
-                                    Console.WriteLine("Approach upcoming obstacle");
-                                    distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                                }
-                                if (distance < 8.5f && distance > 0f)
-                                {
-                                    Console.WriteLine("Obstacle is close, moving right to avoid Dog obstacle");
-                                    MoveRightComponentMethod(player);
+                                    while (distance >= 8.5f)
+                                    {
+                                        Console.WriteLine("Approach upcoming obstacle");
+                                        distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                    }
+                                    if (distance < 8.5f && distance > 0f)
+                                    {
+                                        Console.WriteLine("Obstacle is close, moving right to avoid Dog obstacle");
+                                        MoveRightComponentMethod(player);
 
-                                    if (life == GetPlayerCurrentLife())
+                                        if (life == GetPlayerCurrentLife())
+                                        {
+                                            HandleObstacleBeyondZero(obstacle, player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (life != GetPlayerCurrentLife())
+                                        {
+                                            PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (GetPlayerCurrentLife() == 0)
+                                        {
+                                            Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                            break;
+                                        }
+                                        continue;
+                                    }
+                                    else if (life != GetPlayerCurrentLife())
                                     {
                                         HandleObstacleBeyondZero(obstacle, player.UpdateObject());
                                         if (GetPlayerCurrentLife() == 0)
@@ -904,51 +931,51 @@ namespace trashcat_automation.pages
                                         }
                                         continue;
                                     }
-                                    else if (life != GetPlayerCurrentLife())
+                                }
+                            }
+                            else if (obstacle.worldX == 0f)
+                            {
+                                float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                if (distance > 0f && distance <= 90f)
+                                {
+                                    while (distance >= 8.5f)
                                     {
-                                        PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
-                                        if (GetPlayerCurrentLife() == 0)
+                                        Console.WriteLine("Approach upcoming obstacle");
+                                        distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                    }
+                                    if (distance < 8.5f && distance > 0f)
+                                    {
+                                        Console.WriteLine("Obstacle is not in the path");
+                                        // MoveRightComponentMethod(player);
+
+                                        if (life == GetPlayerCurrentLife())
+                                        {
+                                            HandleObstacleBeyondZero(obstacle, player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (life != GetPlayerCurrentLife())
+                                        {
+                                            PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (GetPlayerCurrentLife() == 0)
                                         {
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
                                         continue;
                                     }
-                                    else if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                                else if (life != GetPlayerCurrentLife())
-                                {
-                                    HandleObstacleBeyondZero(obstacle, player.UpdateObject());
-                                    if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                            }
-                        }
-                        else if (obstacle.worldX == 0f)
-                        {
-                            float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                            if (distance > 0f && distance <= 90f)
-                            {
-                                while (distance >= 8.5f)
-                                {
-                                    Console.WriteLine("Approach upcoming obstacle");
-                                    distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                                }
-                                if (distance < 8.5f && distance > 0f)
-                                {
-                                    Console.WriteLine("Obstacle is not in the path");
-                                    // MoveRightComponentMethod(player);
-
-                                    if (life == GetPlayerCurrentLife())
+                                    else if (life != GetPlayerCurrentLife())
                                     {
                                         HandleObstacleBeyondZero(obstacle, player.UpdateObject());
                                         if (GetPlayerCurrentLife() == 0)
@@ -958,51 +985,51 @@ namespace trashcat_automation.pages
                                         }
                                         continue;
                                     }
-                                    else if (life != GetPlayerCurrentLife())
+                                }
+                            }
+                            else if (obstacle.worldX == 1.5f)
+                            {
+                                float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                if (distance > 0f && distance <= 90f)
+                                {
+                                    while (distance >= 8.5f)
                                     {
-                                        PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
-                                        if (GetPlayerCurrentLife() == 0)
+                                        Console.WriteLine("Approach upcoming obstacle");
+                                        distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                    }
+                                    if (distance < 8.5f && distance > 0f)
+                                    {
+                                        Console.WriteLine("Obstacle is not on the path");
+                                        //MoveRightComponentMethod(player);
+
+                                        if (life == GetPlayerCurrentLife())
+                                        {
+                                            HandleObstacleBeyondZero(obstacle, player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (life != GetPlayerCurrentLife())
+                                        {
+                                            PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (GetPlayerCurrentLife() == 0)
                                         {
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
                                         continue;
                                     }
-                                    else if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                                else if (life != GetPlayerCurrentLife())
-                                {
-                                    HandleObstacleBeyondZero(obstacle, player.UpdateObject());
-                                    if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                            }
-                        }
-                        else if (obstacle.worldX == 1.5f)
-                        {
-                            float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                            if (distance > 0f && distance <= 90f)
-                            {
-                                while (distance >= 8.5f)
-                                {
-                                    Console.WriteLine("Approach upcoming obstacle");
-                                    distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                                }
-                                if (distance < 8.5f && distance > 0f)
-                                {
-                                    Console.WriteLine("Obstacle is not on the path");
-                                    //MoveRightComponentMethod(player);
-
-                                    if (life == GetPlayerCurrentLife())
+                                    else if (life != GetPlayerCurrentLife())
                                     {
                                         HandleObstacleBeyondZero(obstacle, player.UpdateObject());
                                         if (GetPlayerCurrentLife() == 0)
@@ -1012,55 +1039,55 @@ namespace trashcat_automation.pages
                                         }
                                         continue;
                                     }
-                                    else if (life != GetPlayerCurrentLife())
-                                    {
-                                        PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
-                                        if (GetPlayerCurrentLife() == 0)
-                                        {
-                                            Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                            break;
-                                        }
-                                        continue;
-                                    }
-                                    else if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                                else if (life != GetPlayerCurrentLife())
-                                {
-                                    HandleObstacleBeyondZero(obstacle, player.UpdateObject());
-                                    if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
                                 }
                             }
+
                         }
-                 
-                        } 
                         else if (GetPlayerCurrentLane(player.UpdateObject()) == 1)
                         {
-                           if (obstacle.worldX == -1.5f)
-                        {
-                            float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                            if (distance > 0f && distance <= 90f)
+                            if (obstacle.worldX == -1.5f)
                             {
-                                while (distance >= 8.5f)
+                                float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                if (distance > 0f && distance <= 90f)
                                 {
-                                    Console.WriteLine("Approach upcoming obstacle");
-                                    distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                                }
-                                if (distance < 8.5f && distance > 0f)
-                                {
-                                    Console.WriteLine("Obstacle is out of player path");
-                                    //MoveRightComponentMethod(player);
+                                    while (distance >= 8.5f)
+                                    {
+                                        Console.WriteLine("Approach upcoming obstacle");
+                                        distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                    }
+                                    if (distance < 8.5f && distance > 0f)
+                                    {
+                                        Console.WriteLine("Obstacle is out of player path");
+                                        //MoveRightComponentMethod(player);
 
-                                    if (life == GetPlayerCurrentLife())
+                                        if (life == GetPlayerCurrentLife())
+                                        {
+                                            HandleObstacleBeyondZero(obstacle, player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (life != GetPlayerCurrentLife())
+                                        {
+                                            PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (GetPlayerCurrentLife() == 0)
+                                        {
+                                            Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                            break;
+                                        }
+                                        continue;
+                                    }
+                                    else if (life != GetPlayerCurrentLife())
                                     {
                                         HandleObstacleBeyondZero(obstacle, player.UpdateObject());
                                         if (GetPlayerCurrentLife() == 0)
@@ -1070,51 +1097,51 @@ namespace trashcat_automation.pages
                                         }
                                         continue;
                                     }
-                                    else if (life != GetPlayerCurrentLife())
+                                }
+                            }
+                            else if (obstacle.worldX == 0f)
+                            {
+                                float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                if (distance > 0f && distance <= 90f)
+                                {
+                                    while (distance >= 8.5f)
                                     {
-                                        PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
-                                        if (GetPlayerCurrentLife() == 0)
+                                        Console.WriteLine("Approach upcoming obstacle");
+                                        distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                    }
+                                    if (distance < 8.5f && distance > 0f)
+                                    {
+                                        Console.WriteLine("Obstacle is in player's path, move left to avoid Dog obstacle");
+                                        MoveLeftComponentMethod(player);
+
+                                        if (life == GetPlayerCurrentLife())
+                                        {
+                                            HandleObstacleBeyondZero(obstacle, player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (life != GetPlayerCurrentLife())
+                                        {
+                                            PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (GetPlayerCurrentLife() == 0)
                                         {
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
                                         continue;
                                     }
-                                    else if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                                else if (life != GetPlayerCurrentLife())
-                                {
-                                    HandleObstacleBeyondZero(obstacle, player.UpdateObject());
-                                    if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                            }
-                        }
-                        else if (obstacle.worldX == 0f)
-                        {
-                            float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                            if (distance > 0f && distance <= 90f)
-                            {
-                                while (distance >= 8.5f)
-                                {
-                                    Console.WriteLine("Approach upcoming obstacle");
-                                    distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                                }
-                                if (distance < 8.5f && distance > 0f)
-                                {
-                                    Console.WriteLine("Obstacle is in player's path, move left to avoid Dog obstacle");
-                                    MoveLeftComponentMethod(player);
-
-                                    if (life == GetPlayerCurrentLife())
+                                    else if (life != GetPlayerCurrentLife())
                                     {
                                         HandleObstacleBeyondZero(obstacle, player.UpdateObject());
                                         if (GetPlayerCurrentLife() == 0)
@@ -1124,51 +1151,51 @@ namespace trashcat_automation.pages
                                         }
                                         continue;
                                     }
-                                    else if (life != GetPlayerCurrentLife())
+                                }
+                            }
+                            else if (obstacle.worldX == 1.5f)
+                            {
+                                float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                if (distance > 0f && distance <= 90f)
+                                {
+                                    while (distance >= 8.5f)
                                     {
-                                        PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
-                                        if (GetPlayerCurrentLife() == 0)
+                                        Console.WriteLine("Approach upcoming obstacle");
+                                        distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                    }
+                                    if (distance < 8.5f && distance > 0f)
+                                    {
+                                        Console.WriteLine("Obstacle is not on the path");
+                                        //MoveRightComponentMethod(player);
+
+                                        if (life == GetPlayerCurrentLife())
+                                        {
+                                            HandleObstacleBeyondZero(obstacle, player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (life != GetPlayerCurrentLife())
+                                        {
+                                            PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (GetPlayerCurrentLife() == 0)
                                         {
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
                                         continue;
                                     }
-                                    else if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                                else if (life != GetPlayerCurrentLife())
-                                {
-                                    HandleObstacleBeyondZero(obstacle, player.UpdateObject());
-                                    if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                            }
-                        }
-                        else if (obstacle.worldX == 1.5f)
-                        {
-                            float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                            if (distance > 0f && distance <= 90f)
-                            {
-                                while (distance >= 8.5f)
-                                {
-                                    Console.WriteLine("Approach upcoming obstacle");
-                                    distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                                }
-                                if (distance < 8.5f && distance > 0f)
-                                {
-                                    Console.WriteLine("Obstacle is not on the path");
-                                    //MoveRightComponentMethod(player);
-
-                                    if (life == GetPlayerCurrentLife())
+                                    else if (life != GetPlayerCurrentLife())
                                     {
                                         HandleObstacleBeyondZero(obstacle, player.UpdateObject());
                                         if (GetPlayerCurrentLife() == 0)
@@ -1178,55 +1205,55 @@ namespace trashcat_automation.pages
                                         }
                                         continue;
                                     }
-                                    else if (life != GetPlayerCurrentLife())
-                                    {
-                                        PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
-                                        if (GetPlayerCurrentLife() == 0)
-                                        {
-                                            Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                            break;
-                                        }
-                                        continue;
-                                    }
-                                    else if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                                else if (life != GetPlayerCurrentLife())
-                                {
-                                    HandleObstacleBeyondZero(obstacle, player.UpdateObject());
-                                    if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
                                 }
                             }
-                        }
-                     
+
                         }
                         else if (GetPlayerCurrentLane(player.UpdateObject()) == 2)
                         {
-                         if (obstacle.worldX == -1.5f)
-                        {
-                            float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                            if (distance > 0f && distance <= 90f)
+                            if (obstacle.worldX == -1.5f)
                             {
-                                while (distance >= 8.5f)
+                                float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                if (distance > 0f && distance <= 90f)
                                 {
-                                    Console.WriteLine("Approach upcoming obstacle");
-                                    distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                                }
-                                if (distance < 8.5f && distance > 0f)
-                                {
-                                    Console.WriteLine("Obstacle is not in player's path");
-                                    //MoveRightComponentMethod(player);
+                                    while (distance >= 8.5f)
+                                    {
+                                        Console.WriteLine("Approach upcoming obstacle");
+                                        distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                    }
+                                    if (distance < 8.5f && distance > 0f)
+                                    {
+                                        Console.WriteLine("Obstacle is not in player's path");
+                                        //MoveRightComponentMethod(player);
 
-                                    if (life == GetPlayerCurrentLife())
+                                        if (life == GetPlayerCurrentLife())
+                                        {
+                                            HandleObstacleBeyondZero(obstacle, player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (life != GetPlayerCurrentLife())
+                                        {
+                                            PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (GetPlayerCurrentLife() == 0)
+                                        {
+                                            Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                            break;
+                                        }
+                                        continue;
+                                    }
+                                    else if (life != GetPlayerCurrentLife())
                                     {
                                         HandleObstacleBeyondZero(obstacle, player.UpdateObject());
                                         if (GetPlayerCurrentLife() == 0)
@@ -1236,51 +1263,51 @@ namespace trashcat_automation.pages
                                         }
                                         continue;
                                     }
-                                    else if (life != GetPlayerCurrentLife())
+                                }
+                            }
+                            else if (obstacle.worldX == 0f)
+                            {
+                                float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                if (distance > 0f && distance <= 90f)
+                                {
+                                    while (distance >= 8.5f)
                                     {
-                                        PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
-                                        if (GetPlayerCurrentLife() == 0)
+                                        Console.WriteLine("Approach upcoming obstacle");
+                                        distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                    }
+                                    if (distance < 8.5f && distance > 0f)
+                                    {
+                                        Console.WriteLine("Obstacle is not in the path");
+                                        // MoveRightComponentMethod(player);
+
+                                        if (life == GetPlayerCurrentLife())
+                                        {
+                                            HandleObstacleBeyondZero(obstacle, player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (life != GetPlayerCurrentLife())
+                                        {
+                                            PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (GetPlayerCurrentLife() == 0)
                                         {
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
                                         continue;
                                     }
-                                    else if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                                else if (life != GetPlayerCurrentLife())
-                                {
-                                    HandleObstacleBeyondZero(obstacle, player.UpdateObject());
-                                    if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                            }
-                        }
-                        else if (obstacle.worldX == 0f)
-                        {
-                            float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                            if (distance > 0f && distance <= 90f)
-                            {
-                                while (distance >= 8.5f)
-                                {
-                                    Console.WriteLine("Approach upcoming obstacle");
-                                    distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                                }
-                                if (distance < 8.5f && distance > 0f)
-                                {
-                                    Console.WriteLine("Obstacle is not in the path");
-                                    // MoveRightComponentMethod(player);
-
-                                    if (life == GetPlayerCurrentLife())
+                                    else if (life != GetPlayerCurrentLife())
                                     {
                                         HandleObstacleBeyondZero(obstacle, player.UpdateObject());
                                         if (GetPlayerCurrentLife() == 0)
@@ -1290,51 +1317,51 @@ namespace trashcat_automation.pages
                                         }
                                         continue;
                                     }
-                                    else if (life != GetPlayerCurrentLife())
+                                }
+                            }
+                            else if (obstacle.worldX == 1.5f)
+                            {
+                                float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                if (distance > 0f && distance <= 90f)
+                                {
+                                    while (distance >= 8.5f)
                                     {
-                                        PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
-                                        if (GetPlayerCurrentLife() == 0)
+                                        Console.WriteLine("Approach upcoming obstacle");
+                                        distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                    }
+                                    if (distance < 8.5f && distance > 0f)
+                                    {
+                                        Console.WriteLine("Obstacle is in player's path, move left");
+                                        MoveLeftComponentMethod(player);
+
+                                        if (life == GetPlayerCurrentLife())
+                                        {
+                                            HandleObstacleBeyondZero(obstacle, player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (life != GetPlayerCurrentLife())
+                                        {
+                                            PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
+                                            if (GetPlayerCurrentLife() == 0)
+                                            {
+                                                Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
+                                                break;
+                                            }
+                                            continue;
+                                        }
+                                        else if (GetPlayerCurrentLife() == 0)
                                         {
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
                                         continue;
                                     }
-                                    else if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                                else if (life != GetPlayerCurrentLife())
-                                {
-                                    HandleObstacleBeyondZero(obstacle, player.UpdateObject());
-                                    if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                            }
-                        }
-                        else if (obstacle.worldX == 1.5f)
-                        {
-                            float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                            if (distance > 0f && distance <= 90f)
-                            {
-                                while (distance >= 8.5f)
-                                {
-                                    Console.WriteLine("Approach upcoming obstacle");
-                                    distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
-                                }
-                                if (distance < 8.5f && distance > 0f)
-                                {
-                                    Console.WriteLine("Obstacle is in player's path, move left");
-                                    MoveLeftComponentMethod(player);
-
-                                    if (life == GetPlayerCurrentLife())
+                                    else if (life != GetPlayerCurrentLife())
                                     {
                                         HandleObstacleBeyondZero(obstacle, player.UpdateObject());
                                         if (GetPlayerCurrentLife() == 0)
@@ -1344,45 +1371,18 @@ namespace trashcat_automation.pages
                                         }
                                         continue;
                                     }
-                                    else if (life != GetPlayerCurrentLife())
-                                    {
-                                        PlayerCrossesTheObstacle(obstacle.UpdateObject(), player.UpdateObject());
-                                        if (GetPlayerCurrentLife() == 0)
-                                        {
-                                            Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                            break;
-                                        }
-                                        continue;
-                                    }
-                                    else if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
-                                }
-                                else if (life != GetPlayerCurrentLife())
-                                {
-                                    HandleObstacleBeyondZero(obstacle, player.UpdateObject());
-                                    if (GetPlayerCurrentLife() == 0)
-                                    {
-                                        Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
-                                        break;
-                                    }
-                                    continue;
                                 }
                             }
-                        }
-                    
+
                         }
                     }
                     else if (newObstacleWorldZ == nextNewObstacleWorldZ && objectDifference < 1.0f)
                     {
                         if (GetPlayerCurrentLane(player.UpdateObject()) == 0)
                         {
-//if statements checking if double obstacle existing player lane or other lanes when player in left lane.
+                            //if statements checking if double obstacle existing player lane or other lanes when player in left lane.
 
-//if statement with obstacles in left lane and middle lane, with player in left lane.
+                            //if statement with obstacles in left lane and middle lane, with player in left lane.
                             if (obstacle.worldX == -1.5f && nextObstacle.worldX == 0.0f)
                             {
                                 float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
@@ -1443,10 +1443,10 @@ namespace trashcat_automation.pages
                                     }
                                 }
                             }
-//if statement with obstacles in left lane and right lane, with player in left lane.
+                            //if statement with obstacles in left lane and right lane, with player in left lane.
                             else if (obstacle.worldX == -1.5f && nextObstacle.worldX == 1.5f)
                             {
-                                 float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
                                 if (distance > 0f && distance <= 90f)
                                 {
                                     while (distance >= 8.5f)
@@ -1504,10 +1504,10 @@ namespace trashcat_automation.pages
                                     }
                                 }
                             }
-//if statement with obstacles in middle lane and right lane, with player in left lane.                             
+                            //if statement with obstacles in middle lane and right lane, with player in left lane.                             
                             else if (obstacle.worldX == 0.0f && nextObstacle.worldX == 1.5f)
                             {
-                                 float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
                                 if (distance > 0f && distance <= 90f)
                                 {
                                     while (distance >= 8.5f)
@@ -1566,13 +1566,13 @@ namespace trashcat_automation.pages
                                 }
                             }
                         }
-//if statements checking if double obstacle existing player lane or other lanes when player in middle lane.
+                        //if statements checking if double obstacle existing player lane or other lanes when player in middle lane.
                         else if (GetPlayerCurrentLane(player.UpdateObject()) == 1)
                         {
-//if statement with obstacles in left lane and middle lane, with player in middle lane.
+                            //if statement with obstacles in left lane and middle lane, with player in middle lane.
                             if (obstacle.worldX == -1.5f && nextObstacle.worldX == 0.0f)
                             {
-                                 float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
                                 if (distance > 0f && distance <= 90f)
                                 {
                                     while (distance >= 8.5f)
@@ -1584,7 +1584,7 @@ namespace trashcat_automation.pages
                                     {
                                         Console.WriteLine("Obstacle is in player's path, and left lane, move right once.");
                                         MoveRightComponentMethod(player);
-                                       
+
 
                                         if (life == GetPlayerCurrentLife())
                                         {
@@ -1629,10 +1629,10 @@ namespace trashcat_automation.pages
                                     }
                                 }
                             }
-//if statement with obstacles in left lane and right lane, with player in middle lane.
+                            //if statement with obstacles in left lane and right lane, with player in middle lane.
                             else if (obstacle.worldX == -1.5f && nextObstacle.worldX == 1.5f)
                             {
-                                 float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
                                 if (distance > 0f && distance <= 90f)
                                 {
                                     while (distance >= 8.5f)
@@ -1643,7 +1643,7 @@ namespace trashcat_automation.pages
                                     if (distance < 8.5f && distance > 0f)
                                     {
                                         Console.WriteLine("Obstacle is not in player's path, don't move.");
-                                      
+
 
                                         if (life == GetPlayerCurrentLife())
                                         {
@@ -1672,7 +1672,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
-                                           k += 1;
+                                        k += 1;
                                         continue;
                                     }
                                     else if (life != GetPlayerCurrentLife())
@@ -1683,15 +1683,15 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
-                                         k += 1;
+                                        k += 1;
                                         continue;
                                     }
                                 }
                             }
-//if statement with obstacles in middle lane and right lane, with player in middle lane.                                                         
+                            //if statement with obstacles in middle lane and right lane, with player in middle lane.                                                         
                             else if (obstacle.worldX == 0.0f && nextObstacle.worldX == 1.5f)
                             {
-                                 float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
+                                float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
                                 if (distance > 0f && distance <= 90f)
                                 {
                                     while (distance >= 8.5f)
@@ -1712,7 +1712,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
-                                             k += 1;
+                                            k += 1;
                                             continue;
                                         }
                                         else if (life != GetPlayerCurrentLife())
@@ -1723,7 +1723,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
-                                             k += 1;
+                                            k += 1;
                                             continue;
                                         }
                                         else if (GetPlayerCurrentLife() == 0)
@@ -1731,7 +1731,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
-                                         k += 1;
+                                        k += 1;
                                         continue;
                                     }
                                     else if (life != GetPlayerCurrentLife())
@@ -1742,16 +1742,16 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
-                                         k += 1;
+                                        k += 1;
                                         continue;
                                     }
                                 }
                             }
                         }
-//if statements checking if double obstacle existing player lane or other lanes when player in right lane.
+                        //if statements checking if double obstacle existing player lane or other lanes when player in right lane.
                         else if (GetPlayerCurrentLane(player.UpdateObject()) == 2)
                         {
-//if statement with obstacles in left lane and middle lane, with player in right lane.
+                            //if statement with obstacles in left lane and middle lane, with player in right lane.
                             if (obstacle.worldX == -1.5f && nextObstacle.worldX == 0.0f)
                             {
                                 float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
@@ -1765,7 +1765,7 @@ namespace trashcat_automation.pages
                                     if (distance < 8.5f && distance > 0f)
                                     {
                                         Console.WriteLine("Obstacle is not in player's path, don't move.");
-                                      
+
 
                                         if (life == GetPlayerCurrentLife())
                                         {
@@ -1806,7 +1806,7 @@ namespace trashcat_automation.pages
                                     }
                                 }
                             }
-//if statement with obstacles in left lane and right lane, with player in right lane.
+                            //if statement with obstacles in left lane and right lane, with player in right lane.
                             else if (obstacle.worldX == -1.5f && nextObstacle.worldX == 1.5f)
                             {
                                 float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
@@ -1821,7 +1821,7 @@ namespace trashcat_automation.pages
                                     {
                                         Console.WriteLine("Obstacle is in player's path, and left lane, move left once.");
                                         MoveLeftComponentMethod(player);
-                                        
+
 
                                         if (life == GetPlayerCurrentLife())
                                         {
@@ -1831,7 +1831,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
-                                             k += 1;
+                                            k += 1;
                                             continue;
                                         }
                                         else if (life != GetPlayerCurrentLife())
@@ -1842,7 +1842,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
-                                             k += 1;
+                                            k += 1;
                                             continue;
                                         }
                                         else if (GetPlayerCurrentLife() == 0)
@@ -1850,7 +1850,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
-                                         k += 1;
+                                        k += 1;
                                         continue;
                                     }
                                     else if (life != GetPlayerCurrentLife())
@@ -1861,12 +1861,12 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
-                                         k += 1;
+                                        k += 1;
                                         continue;
                                     }
                                 }
                             }
-//if statement with obstacles in middle lane and right lane, with player in right lane. 
+                            //if statement with obstacles in middle lane and right lane, with player in right lane. 
                             else if (obstacle.worldX == 0.0f && nextObstacle.worldX == 1.5f)
                             {
                                 float distance = (newObstacleWorldZ - player.UpdateObject().worldZ + 100) % 100;
@@ -1892,7 +1892,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
-                                             k += 1;
+                                            k += 1;
                                             continue;
                                         }
                                         else if (life != GetPlayerCurrentLife())
@@ -1903,7 +1903,7 @@ namespace trashcat_automation.pages
                                                 Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                                 break;
                                             }
-                                             k += 1;
+                                            k += 1;
                                             continue;
                                         }
                                         else if (GetPlayerCurrentLife() == 0)
@@ -1911,7 +1911,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
-                                         k += 1;
+                                        k += 1;
                                         continue;
                                     }
                                     else if (life != GetPlayerCurrentLife())
@@ -1922,7 +1922,7 @@ namespace trashcat_automation.pages
                                             Console.WriteLine("Player has lost all lives, exiting obstacle avoidance.");
                                             break;
                                         }
-                                         k += 1;
+                                        k += 1;
                                         continue;
                                     }
                                 }
@@ -1930,6 +1930,7 @@ namespace trashcat_automation.pages
                         }
                     }
                 }
+                HandleObstacleBeyondZero(obstacle.UpdateObject(), player.UpdateObject());
             }
          
         }

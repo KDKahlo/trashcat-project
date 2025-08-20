@@ -10,7 +10,7 @@ namespace trashcat_automation.tests
     [TestFixture]
     [Parallelizable(ParallelScope.Fixtures)]
 
-    public class GamePlayTest
+    public class GamePlayTest1
     {
         AltDriver Driver;
         MainMenuPage MainMenuPage;
