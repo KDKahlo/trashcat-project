@@ -1378,17 +1378,59 @@ namespace trashcat_automation.pages
                     }
                     else if (newObstacleWorldZ == nextNewObstacleWorldZ && objectDifference < 1.0f)
                     {
-                           if (GetPlayerCurrentLane(player.UpdateObject()) == 0)
+                        if (GetPlayerCurrentLane(player.UpdateObject()) == 0)
                         {
+                            //if statement checking if double obstacle exists when player in left lane and lane next to player,
+                            //  meaning player would need to move twice to clear obstacle path
+                            if (obstacle.worldX == -1.5f && nextObstacle.worldX == 0.0f)
+                            {
 
-                        } 
+                            }
+                            else if (obstacle.worldX == -1.5f && nextObstacle.worldX == 1.5f)
+                            {
+
+                            }
+                            else   if (obstacle.worldX == 0.0f && nextObstacle.worldX == 1.5f)
+                            {
+                                
+                            }
+                        }
+                         //if statement checking if double obstacle exists when player in middle lane and obstacles in right or left lane by player lane, 
+                         ///meaning player would need to move right or left to clear obstacle path
+
+
+
                         else if (GetPlayerCurrentLane(player.UpdateObject()) == 1)
                         {
-                            
+                            if (obstacle.worldX == -1.5f && nextObstacle.worldX == 0.0f)
+                            {
+
+                            }
+                             //if statement checking if double obstacle exists when player in right lane and lane next to player, 
+                             // meaning player would need to move twice to the left to clear obstacle path
+                            else if (obstacle.worldX == -1.5f && nextObstacle.worldX == 1.5f)
+                            {
+
+                            }
+                            else if (obstacle.worldX == 0.0f && nextObstacle.worldX == 1.5f)
+                            {
+
+                            }
                         }
                         else if (GetPlayerCurrentLane(player.UpdateObject()) == 2)
                         {
-                            
+                            if (obstacle.worldX == -1.5f && nextObstacle.worldX == 0.0f)
+                            {
+
+                            }
+                            else if (obstacle.worldX == -1.5f && nextObstacle.worldX == 1.5f)
+                            {
+
+                            }
+                            else if (obstacle.worldX == 0.0f && nextObstacle.worldX == 1.5f)
+                            {
+
+                            }
                         }
                     }
                 }
