@@ -238,9 +238,17 @@ namespace trashcat_automation.pages
         public void ModifyComponentProperty()
         {
             AltObject startButtonText = Driver.FindObject(By.PATH, "/UICamera/Loadout/StartButton/Text");
-             startButtonText.SetComponentProperty("UnityEngine.UI.Text", "fontSize", 30, "UnityEngine.UI");
+            startButtonText.SetComponentProperty("UnityEngine.UI.Text", "fontSize", 30, "UnityEngine.UI");
+        }
+        public string GetScreenShot(string name)
+        {
+            string fileName = name;
+            string folderPath = "./Screenshots/";
+            string? path = $"{folderPath}{fileName}";
+            Driver.GetPNGScreenshot(path);
+            FileAssert.Exists(path);
+            Console.WriteLine($"Failed case, screenshot captured: {name}");
+            return path;
         }
     }
-
-    
 }

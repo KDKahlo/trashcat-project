@@ -3,10 +3,14 @@ using System.Threading;
 using AltTester.AltTesterUnitySDK.Driver;
 using trashcat_automation.pages;
 using NUnit.Framework;
+using Allure.NUnit;
 
 namespace trashcat_automation.tests
 {
-
+    //code necessary for Allure reporting
+    [TestFixture]
+    [AllureNUnit]
+    
     public class MainMenuTest
     {
         AltDriver Driver;
@@ -89,7 +93,7 @@ namespace trashcat_automation.tests
         {
             MainMenuPage.WaitForLogoToDisappear();
 
-            
+
         }
     }
 }
