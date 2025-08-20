@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("trashcat-project")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65a546d46a19f056d583c35d4498a08ae6fd99fd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a27dec9f7177752ccb040baaead4f84607eed3a")]
 [assembly: System.Reflection.AssemblyProductAttribute("trashcat-project")]
 [assembly: System.Reflection.AssemblyTitleAttribute("trashcat-project")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
