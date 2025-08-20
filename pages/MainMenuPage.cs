@@ -242,12 +242,20 @@ namespace trashcat_automation.pages
         }
         public string GetScreenShot(string name)
         {
+            //stores the provided name for the screenshot
             string fileName = name;
+            //this is the path to where the screenshot will be saved
             string folderPath = "./Screenshots/";
+            //this will create the full path where the screenshot will be saved
             string? path = $"{folderPath}{fileName}";
+            //this is an AltTester method that will allow us to take a screenshot
+            //  and save it to the path we created
             Driver.GetPNGScreenshot(path);
+            //this will check if the file exists at the path we created
             FileAssert.Exists(path);
+            //this will print out a message that the screenshot was taken and the file name it exist under.
             Console.WriteLine($"Failed case, screenshot captured: {name}");
+            //this will return the path where the screenshot was saved
             return path;
         }
     }
