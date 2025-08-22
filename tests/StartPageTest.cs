@@ -14,10 +14,18 @@ namespace trashcat_automation.tests
 
         //the Setup method tells the system this is needed first
         [SetUp]
-
+       
+        
+//before any test are run, this will set up the driver connection to the game.  
         public void SetUp()
         {
+//this will create a new instance of the AltDriver and connect to the game on port
+//13000. This is the port that the game is running on.
             Driver = new AltDriver(port: 13000);
+//This will also create a new instance of the MainMenuPage class, which is used
+//to interact with the start page of the game.
+//This method is run before each test is run.
+
             startPage = new MainMenuPage(Driver);
 
         }
